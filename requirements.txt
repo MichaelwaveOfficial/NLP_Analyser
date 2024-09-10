@@ -7,6 +7,10 @@ gradio==4.36.1
 seaborn
 spacy
 pyvis==0.3.2
+scikit-learn
+datasets
+evaluate==0.4.2
+python-dotenv
 
 ##torch===1.7.1+cu110 torchvision===0.8.2+cu110 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
 ##!pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
