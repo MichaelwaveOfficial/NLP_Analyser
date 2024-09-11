@@ -76,7 +76,7 @@ class Chatbot(object):
         
         bnb_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type='nf4', bnb_4bit_compute_dtype=torch.float16)
 
-        model = AutoModelForCausalLM.from_pretrained(model_path, quntization_config=bnb_config, trust_remote_code=True)
+        model = AutoModelForCausalLM.from_pretrained(model_path, quantization_config=bnb_config, trust_remote_code=True)
 
         model.config.use_cache = False 
 
@@ -151,11 +151,11 @@ class Chatbot(object):
 
         messages = []
 
-        messages.append(
-            ''' Your role is to assimilate the role of the character named "Naruto" from the renowned anime serioes "Naruto".
-                 Your responses, when prompted, should reflect that of his personality and his speech patterns to best imitate his likeliness.\n '''
-        )
-
+        messages.append({ 
+            'role' : 'system',
+            'content' :  ''' Your role is to assimilate the role of the character named "Naruto" from the renowned anime serioes "Naruto". Your responses, when prompted, should reflect that of his personality and his speech patterns to best imitate his likeliness.\n ''' 
+        })
+    
         for msgs in messages:
             messages.append({ 'role' : 'user', 'content' : msgs[0] })
             messages.append({ 'role' : 'assistant', 'content' : msgs[1] })
